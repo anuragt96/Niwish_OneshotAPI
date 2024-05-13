@@ -1,0 +1,1583 @@
+{
+	"info": {
+		"_postman_id": "9233a35f-1df5-4db5-b67b-4a37cc2dff7f",
+		"name": "DSA(Oneshot Partner Signup)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26564735"
+	},
+	"item": [
+		{
+			"name": "TS 1 : Verify that Partner should not be able to register themselves if entered only one required info",
+			"item": [
+				{
+					"name": "TC-1 : Verify if partner provide one required details(Name)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that value of requiredInfo should be false when partner entered only Name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.requiredInfo).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Verify that each response property has a value of false\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var key in jsonData) {\r",
+									"        pm.expect(jsonData[key]).to.eql(false);\r",
+									"    }\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Anurag\",\r\n    \"mobile\": \"\",\r\n    \"email\": \"\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-2 : Verify if partner provide one required details(Email)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that value of requiredInfo should be False when partner entered only Email\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.requiredInfo).to.eql(false);\r",
+									"});\r",
+									"pm.test(\"Verify that each response property has a value of false\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var key in jsonData) {\r",
+									"        pm.expect(jsonData[key]).to.eql(false);\r",
+									"    }\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"mobile\": \"\",\r\n    \"email\": \"anurag1231@yopmail.com\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-3 : Verify if partner provide one required details(Mobile)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that value of requiredInfo should be False when partner entered only Mobile number\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.requiredInfo).to.eql(false);\r",
+									"});\r",
+									"pm.test(\"Verify that each response property has a value of false\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var key in jsonData) {\r",
+									"        pm.expect(jsonData[key]).to.eql(false);\r",
+									"    }\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"mobile\": \"8743218790\",\r\n    \"email\": \"\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Test Scenario 1** : Verify that partner should not be able to register themselves by providing only 1 required information from either Name or Email or Mobile number\n\nNote : Email and Mobile number should be unique"
+		},
+		{
+			"name": "TS 2 : Verify that Partner should not able to register themselves if entered any 2 required info",
+			"item": [
+				{
+					"name": "TC-1 : Verify if partner provide one required details(Name & Mobile)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that value of requiredInfo should be false when partner entered Name & Mobile\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.requiredInfo).to.eql(false);\r",
+									"});\r",
+									"pm.test(\"Verify that each response property has a value of false\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var key in jsonData) {\r",
+									"        pm.expect(jsonData[key]).to.eql(false);\r",
+									"    }\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Anurag\",\r\n    \"mobile\": \"9832104829\",\r\n    \"email\": \"\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-2 : Verify if partner provide one required details(Name & Email)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that value of requiredInfo should be false when partner entered Name & Mobile\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.requiredInfo).to.eql(false);\r",
+									"});\r",
+									"pm.test(\"Verify that each response property has a value of false\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var key in jsonData) {\r",
+									"        pm.expect(jsonData[key]).to.eql(false);\r",
+									"    }\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Anurag\",\r\n    \"mobile\": \"\",\r\n    \"email\": \"anurag1234@yopmail.com\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-3 : Verify if partner provide one required details(Mobile & Name)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that value of requiredInfo should be false when partner entered Name & Mobile\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.requiredInfo).to.eql(false);\r",
+									"});\r",
+									"pm.test(\"Verify that each response property has a value of false\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var key in jsonData) {\r",
+									"        pm.expect(jsonData[key]).to.eql(false);\r",
+									"    }\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Anurag\",\r\n    \"mobile\": \"8732104329\",\r\n    \"email\": \"\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-4 : Verify if partner provide one required details(Mobile & Email)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that value of requiredInfo should be false when partner entered Name & Mobile\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.requiredInfo).to.eql(false);\r",
+									"});\r",
+									"pm.test(\"Verify that each response property has a value of false\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var key in jsonData) {\r",
+									"        pm.expect(jsonData[key]).to.eql(false);\r",
+									"    }\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"mobile\": \"6732104329\",\r\n    \"email\": \"deepanshu987@yopmail.com\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-5 : Verify if partner provide one required details(Email & Name)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that value of requiredInfo should be false when partner entered Name & Mobile\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.requiredInfo).to.eql(false);\r",
+									"});\r",
+									"pm.test(\"Verify that each response property has a value of false\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var key in jsonData) {\r",
+									"        pm.expect(jsonData[key]).to.eql(false);\r",
+									"    }\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Saquib\",\r\n    \"mobile\": \"\",\r\n    \"email\": \"saquib1231@yopmail.com\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-6 : Verify if partner provide one required details(Email & Mobile)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that value of requiredInfo should be false when partner entered Name & Mobile\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.requiredInfo).to.eql(false);\r",
+									"});\r",
+									"pm.test(\"Verify that each response property has a value of false\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var key in jsonData) {\r",
+									"        pm.expect(jsonData[key]).to.eql(false);\r",
+									"    }\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ravinder\",\r\n    \"mobile\": \"\",\r\n    \"email\": \"ravindersingh123@yopmail.com\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Test Scenario 2** : Verify that partner should not be able to register themselves by providing any 2 required information from either Name or Email or Mobile number\n\nNote : Email and Mobile number should be unique\n\nThe most probable combination for these 3 fields should be\n\n1. name-mobile\n2. name-email\n3. mobile-name\n4. mobile-email\n5. email-name\n6. email-mobile"
+		},
+		{
+			"name": "TS 3 : Verify that partner should be able to register or not",
+			"item": [
+				{
+					"name": "TC-1 : Verify that if partner provides only requiredInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"//actual test cases\r",
+									"\r",
+									"pm.test(\"Verify that requiredInfo property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.requiredInfo).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that alreadyExist property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.alreadyExist).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Verify that distributer object has all the required properties\", function () {\r",
+									"//     var responseJSON = pm.response.json().distributer;\r",
+									"//     pm.expect(responseJSON).to.have.property('id');\r",
+									"//     pm.expect(responseJSON).to.have.property('name');\r",
+									"//     pm.expect(responseJSON).to.have.property('code');\r",
+									"//     pm.expect(responseJSON).to.have.property('email');\r",
+									"//     pm.expect(responseJSON).to.have.property('mobile');\r",
+									"//     pm.expect(responseJSON).to.have.property('enabled');\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Verify that address property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.address).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that bankDetails property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.bankDetails).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that aadharDetails property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.aadharDetails).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that panDetails property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.panDetails).to.eql(false);\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ambar Tiwari\",\r\n    \"mobile\": \"9032193421\",\r\n    \"email\": \"ambart1233231@yopmail.com\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-2 : Verify that if partner is already exist or not",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"//actual test cases\r",
+									"\r",
+									"pm.test(\"Verify that requiredInfo property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.requiredInfo).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that alreadyExist property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.alreadyExist).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that address property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.address).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that bankDetails property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.bankDetails).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that aadharDetails property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.aadharDetails).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that panDetails property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.panDetails).to.eql(false);\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ambar Tiwari\",\r\n    \"mobile\": \"9032193421\",\r\n    \"email\": \"ambart1233231@yopmail.com\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-3 : Verify that if partner provides requiredInfo and PAN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"//actual test cases\r",
+									"\r",
+									"pm.test(\"Verify that requiredInfo property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.requiredInfo).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that alreadyExist property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.alreadyExist).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Verify that distributer object has all the required properties\", function () {\r",
+									"//     var responseJSON = pm.response.json().distributer;\r",
+									"//     pm.expect(responseJSON).to.have.property('id');\r",
+									"//     pm.expect(responseJSON).to.have.property('name');\r",
+									"//     pm.expect(responseJSON).to.have.property('code');\r",
+									"//     pm.expect(responseJSON).to.have.property('email');\r",
+									"//     pm.expect(responseJSON).to.have.property('mobile');\r",
+									"//     pm.expect(responseJSON).to.have.property('enabled');\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Verify that address property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.address).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that bankDetails property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.bankDetails).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that aadharDetails property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.aadharDetails).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that panDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.panDetails).to.eql(true);\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Archit Kumar Singhania\",\r\n    \"mobile\": \"6002105432\",\r\n    \"email\": \"architsingharchit@yopmail.com\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"540086405906\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"\",\r\n        \"number\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-4 : Verify that if partner provides requiredInfo,PAN & Aadhaar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"//actual test cases\r",
+									"\r",
+									"pm.test(\"Verify that requiredInfo property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.requiredInfo).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that alreadyExist property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.alreadyExist).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Verify that distributer object has all the required properties\", function () {\r",
+									"//     var responseJSON = pm.response.json().distributer;\r",
+									"//     pm.expect(responseJSON).to.have.property('id');\r",
+									"//     pm.expect(responseJSON).to.have.property('name');\r",
+									"//     pm.expect(responseJSON).to.have.property('code');\r",
+									"//     pm.expect(responseJSON).to.have.property('email');\r",
+									"//     pm.expect(responseJSON).to.have.property('mobile');\r",
+									"//     pm.expect(responseJSON).to.have.property('enabled');\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Verify that address property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.address).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that bankDetails property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.bankDetails).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that aadharDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.aadharDetails).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that panDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.panDetails).to.eql(true);\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Himanshu Singh\",\r\n    \"mobile\": \"8600100456\",\r\n    \"email\": \"456hsingh123@yopmail.com\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"540086489096\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"23-07-2023 05:10\",\r\n        \"number\": \"123456001884\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"\",\r\n        \"accountNumber\": \"\",\r\n        \"bankName\": \"\",\r\n        \"ifsc\": \"\",\r\n        \"verifiedAt\": \"\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-5 : Verify that if partner provides requiredInfo,PAN,Aadhaar & BankInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"//actual test cases\r",
+									"\r",
+									"pm.test(\"Verify that requiredInfo property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.requiredInfo).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that alreadyExist property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.alreadyExist).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Verify that distributer object has all the required properties\", function () {\r",
+									"//     var responseJSON = pm.response.json().distributer;\r",
+									"//     pm.expect(responseJSON).to.have.property('id');\r",
+									"//     pm.expect(responseJSON).to.have.property('name');\r",
+									"//     pm.expect(responseJSON).to.have.property('code');\r",
+									"//     pm.expect(responseJSON).to.have.property('email');\r",
+									"//     pm.expect(responseJSON).to.have.property('mobile');\r",
+									"//     pm.expect(responseJSON).to.have.property('enabled');\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Verify that address property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.address).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that bankDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.bankDetails).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that aadharDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.aadharDetails).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that panDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.panDetails).to.eql(true);\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Aman Kumar Singh\",\r\n    \"mobile\": \"9870004531\",\r\n    \"email\": \"amanksingh123111@yopmail.com\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"541186445996\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"123326781234\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"Aman Kumar Singh\",\r\n        \"accountNumber\": \"34940281550\",\r\n        \"bankName\": \"State Bank of India\",\r\n        \"ifsc\": \"SBIN0002619\",\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"\",\r\n        \"city\": \"\",\r\n        \"state\": \"\",\r\n        \"pincode\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-6 : Verify that if partner provides all details (Oneshot) without any code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"//actual test cases\r",
+									"\r",
+									"pm.test(\"Verify that requiredInfo property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.requiredInfo).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that alreadyExist property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.alreadyExist).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Verify that distributer object has all the required properties\", function () {\r",
+									"//     var responseJSON = pm.response.json().distributer;\r",
+									"//     pm.expect(responseJSON).to.have.property('id');\r",
+									"//     pm.expect(responseJSON).to.have.property('name');\r",
+									"//     pm.expect(responseJSON).to.have.property('code');\r",
+									"//     pm.expect(responseJSON).to.have.property('email');\r",
+									"//     pm.expect(responseJSON).to.have.property('mobile');\r",
+									"//     pm.expect(responseJSON).to.have.property('enabled');\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Verify that address property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.address).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that bankDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.bankDetails).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that aadharDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.aadharDetails).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that panDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.panDetails).to.eql(true);\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Anurag Kumar Singh\",\r\n    \"mobile\": \"9777236600\",\r\n    \"email\": \"100anuragksingh@yopmail.com\",\r\n    \"code\":\"\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"760086445996\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"763456781234\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"Anurag Kumar Singh\",\r\n        \"accountNumber\": \"34940281147\",\r\n        \"bankName\": \"State Bank of India\",\r\n        \"ifsc\": \"SBIN0002619\",\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"New Road\",\r\n        \"city\": \"Noida\",\r\n        \"state\": \"UP\",\r\n        \"pincode\": \"201301\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-7 : Verify that if partner provides all details (Oneshot) with Master code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"//actual test cases\r",
+									"\r",
+									"pm.test(\"Verify that requiredInfo property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.requiredInfo).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that alreadyExist property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.alreadyExist).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Verify that distributer object has all the required properties\", function () {\r",
+									"//     var responseJSON = pm.response.json().distributer;\r",
+									"//     pm.expect(responseJSON).to.have.property('id');\r",
+									"//     pm.expect(responseJSON).to.have.property('name');\r",
+									"//     pm.expect(responseJSON).to.have.property('code');\r",
+									"//     pm.expect(responseJSON).to.have.property('email');\r",
+									"//     pm.expect(responseJSON).to.have.property('mobile');\r",
+									"//     pm.expect(responseJSON).to.have.property('enabled');\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Verify that address property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.address).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that bankDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.bankDetails).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that aadharDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.aadharDetails).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that panDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.panDetails).to.eql(true);\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(true);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Anurag Kumar Singh\",\r\n    \"mobile\": \"9777236600\",\r\n    \"email\": \"100anuragksingh@yopmail.com\",\r\n    \"code\":\"NIW728455902\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"760086445996\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"763456781234\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"Anurag Kumar Singh\",\r\n        \"accountNumber\": \"34940281147\",\r\n        \"bankName\": \"State Bank of India\",\r\n        \"ifsc\": \"SBIN0002619\",\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"New Road\",\r\n        \"city\": \"Noida\",\r\n        \"state\": \"UP\",\r\n        \"pincode\": \"201301\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-8 : Verify that if partner provides all details (Oneshot) with Sales code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"//actual test cases\r",
+									"\r",
+									"pm.test(\"Verify that requiredInfo property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.requiredInfo).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that alreadyExist property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.alreadyExist).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Verify that distributer object has all the required properties\", function () {\r",
+									"//     var responseJSON = pm.response.json().distributer;\r",
+									"//     pm.expect(responseJSON).to.have.property('id');\r",
+									"//     pm.expect(responseJSON).to.have.property('name');\r",
+									"//     pm.expect(responseJSON).to.have.property('code');\r",
+									"//     pm.expect(responseJSON).to.have.property('email');\r",
+									"//     pm.expect(responseJSON).to.have.property('mobile');\r",
+									"//     pm.expect(responseJSON).to.have.property('enabled');\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Verify that address property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.address).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that bankDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.bankDetails).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that aadharDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.aadharDetails).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that panDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.panDetails).to.eql(true);\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(true);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Anurag Kumar Singh\",\r\n    \"mobile\": \"9777236600\",\r\n    \"email\": \"100anuragksingh@yopmail.com\",\r\n    \"code\":\"NIW138664347\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"760086445996\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"763456781234\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"Anurag Kumar Singh\",\r\n        \"accountNumber\": \"34940281147\",\r\n        \"bankName\": \"State Bank of India\",\r\n        \"ifsc\": \"SBIN0002619\",\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"New Road\",\r\n        \"city\": \"Noida\",\r\n        \"state\": \"UP\",\r\n        \"pincode\": \"201301\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-9 : Verify that if partner should not be registered (Oneshot) with Normal code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that the status code of the request is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify that the response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"pm.test(\"Verify that the POST request should be successful\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+									"});\r",
+									"pm.test(\"Verify that the content-Type 'application/json' should be set in the headers\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"//actual test cases\r",
+									"\r",
+									"pm.test(\"Verify that requiredInfo property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.requiredInfo).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that alreadyExist property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.alreadyExist).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Verify that distributer object has all the required properties\", function () {\r",
+									"//     var responseJSON = pm.response.json().distributer;\r",
+									"//     pm.expect(responseJSON).to.have.property('id');\r",
+									"//     pm.expect(responseJSON).to.have.property('name');\r",
+									"//     pm.expect(responseJSON).to.have.property('code');\r",
+									"//     pm.expect(responseJSON).to.have.property('email');\r",
+									"//     pm.expect(responseJSON).to.have.property('mobile');\r",
+									"//     pm.expect(responseJSON).to.have.property('enabled');\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Verify that address property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.address).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that bankDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.bankDetails).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that aadharDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.aadharDetails).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that panDetails property is true\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.panDetails).to.eql(true);\r",
+									"});\r",
+									"pm.test(\"Verify that Distributor relation property is false\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON.distributerRelation).to.eql(false);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Anurag Kumar Singh\",\r\n    \"mobile\": \"9777231680\",\r\n    \"email\": \"100anuragksingh54@yopmail.com\",\r\n    \"code\":\"NIW560382961\",\r\n    \"pan\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"760086445996\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"aadhaar\": {\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"number\": \"763456781234\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"bankDetail\": {\r\n        \"accountName\": \"Anurag Kumar Singh\",\r\n        \"accountNumber\": \"34940281147\",\r\n        \"bankName\": \"State Bank of India\",\r\n        \"ifsc\": \"SBIN0002619\",\r\n        \"verifiedAt\": \"23-07-2023 20:10\",\r\n        \"referenceId\": \"\"\r\n    },\r\n    \"address\": {\r\n        \"address\": \"New Road\",\r\n        \"city\": \"Noida\",\r\n        \"state\": \"UP\",\r\n        \"pincode\": \"201301\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://niwish-api-dev.bluelup.in/distributer/multipass/signup",
+							"protocol": "https",
+							"host": [
+								"niwish-api-dev",
+								"bluelup",
+								"in"
+							],
+							"path": [
+								"distributer",
+								"multipass",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Test Scenario** **3**: Verify that partner should be able to register themselves by providing the required information like Name, Email and Mobile number\n\nNote : Email and Mobile number should be unique"
+		}
+	]
+}
